@@ -88,7 +88,7 @@ namespace Blazor.Gitter.Core.Components.Shared
                         await LocalisationHelper.BuildLocalCulture();
                         await LocalisationHelper.BuildLocalTimeZone();
                         Console.WriteLine($"reading GitterKey from storage - {done} attempts left");
-                        SetApiKey(await LocalStorage.GetItem<string>("GitterKey"));
+                        SetApiKey(await LocalStorage.GetItemAsync<string>("GitterKey"));
                         break;
                     }
                     catch 
@@ -171,7 +171,7 @@ namespace Blazor.Gitter.Core.Components.Shared
         {
             if (HasApiKey)
             {
-                await LocalStorage.SetItem("GitterKey", apiKey);
+                await LocalStorage.SetItemAsync("GitterKey", apiKey);
             }
         }
         public bool HasChatUser => myUser is object;
